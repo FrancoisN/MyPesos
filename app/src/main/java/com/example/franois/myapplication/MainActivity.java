@@ -12,6 +12,7 @@ import android.view.View.OnClickListener;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
     private Button b = null;
     private Button big = null;
     private int p = 1;
+    private RelativeLayout view = null;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +34,18 @@ public class MainActivity extends AppCompatActivity {
 
         text = (TextView)findViewById(R.id.textView2);
         b = (Button)findViewById(R.id.button);
+        view  = (RelativeLayout)findViewById(R.id.View);
+
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                b.setText(b.getText()+ " pesos");
+                p = p+100;
+                text.setText(p + " Pesos");
+                if (p>1000)
+                    Toast.makeText(MainActivity.this, "Un maaax de pessoooss", Toast.LENGTH_SHORT).show();
+            }
+        });
 /*
         b.setOnClickListener(new View.OnClickListener() {
             @Override
